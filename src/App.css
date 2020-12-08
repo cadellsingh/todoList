@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+body {
+  background-color: lightgreen;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.light-theme {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#container {
+  background: yellow;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 40%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: green;
+}
+
+header #icon {
+  margin: auto 0;
+}
+
+#form {
+  border: 1px solid green;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+#form form {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+}
+
+#form input[type="checkbox"] {
+  border-radius: 100%;
+}
+
+#form input[type="text"] {
+  border: 0;
+  background-color: yellow;
+  outline: none;
+}
+
+#todo-items .todo {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr;
+  padding: 20px;
+}
+
+.todo p {
+  margin: auto 0;
+}
+
+.todo .icon {
+  justify-self: end;
 }

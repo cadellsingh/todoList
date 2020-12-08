@@ -1,25 +1,95 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState, useReducer } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
 
-function App() {
+// header todo-items & the form could be their own components
+
+const todoList = [
+  {
+    id: 0,
+    todo: "",
+    completed: false,
+  },
+];
+
+const setTodoList = (state, action) => {
+  return "test";
+};
+
+const App = () => {
+  const [todos, dispatchTodos] = useReducer(setTodoList, todoList);
+  const [todo, setTodo] = useState("");
+  const [completed, setCompleted] = useState(false);
+
+  const handleOnSubmit = (event) => {
+    console.log(todo);
+    console.log(completed);
+
+    setTodo("");
+    setCompleted(false);
+
+    event.preventDefault();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div id="container">
+      <header>
+        <h2>Todo</h2>
+        {/* <FontAwesomeIcon icon={faMoon} /> */}
+        <div id="icon">
+          <FontAwesomeIcon className="light-theme" icon={faSun} />
+        </div>
       </header>
+      <div id="form">
+        <form onSubmit={handleOnSubmit}>
+          <input
+            type="checkbox"
+            name="completed"
+            checked={completed}
+            onChange={() => setCompleted(!completed)}
+          />
+          <input
+            type="text"
+            name="todo"
+            placeholder="Enter todo"
+            value={todo}
+            onChange={(event) => setTodo(event.target.value)}
+          />
+        </form>
+      </div>
+
+      <div id="todo-items">
+        <div className="todo">
+          <input type="checkbox" />
+          <p>jog around the park</p>
+          <FontAwesomeIcon className="icon" icon={faTimes} />
+        </div>
+        <div className="todo">
+          <input type="checkbox" />
+          <p>jog around the park</p>
+          <FontAwesomeIcon className="icon" icon={faTimes} />
+        </div>
+        <div className="todo">
+          <input type="checkbox" />
+          <p>read for 1 hr</p>
+          <FontAwesomeIcon className="icon" icon={faTimes} />
+        </div>
+        <div className="todo">
+          <input type="checkbox" />
+          <p>pick up groceries </p>
+          <FontAwesomeIcon className="icon" icon={faTimes} />
+        </div>
+        <div className="todo">
+          <input type="checkbox" />
+          <p>complete todo app on frontend mentor</p>
+          <FontAwesomeIcon className="icon" icon={faTimes} />
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
