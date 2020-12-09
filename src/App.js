@@ -4,19 +4,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { uid } from "./utils/uid";
 
 // header todo-items & the form could be their own components
 
-const todoList = [
-  {
-    id: 0,
-    todo: "",
-    completed: false,
-  },
-];
+const todoList = [];
 
 const setTodoList = (state, action) => {
-  return "test";
+  const { todo, completed } = action;
+
+  const newTodo = {
+    id: uid(),
+    todo: todo,
+    completed: completed,
+  };
+
+  return [...state, newTodo];
 };
 
 const App = () => {
@@ -25,8 +28,7 @@ const App = () => {
   const [completed, setCompleted] = useState(false);
 
   const handleOnSubmit = (event) => {
-    console.log(todo);
-    console.log(completed);
+    dispatchTodos({ todo: todo, completed: completed });
 
     setTodo("");
     setCompleted(false);
