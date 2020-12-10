@@ -13,7 +13,6 @@ import styled from "styled-components";
 
 const StyledBackgroundImage = styled.div`
   background-color: hsl(235, 21%, 11%);
-  //min-height: 100%;
   background-repeat: repeat-y;
 `;
 
@@ -24,8 +23,6 @@ const StyledContainer = styled.div`
   margin: 0 auto;
   max-width: 600px;
 `;
-
-// header todo-items & the form could be their own components
 
 // const todoList = [];
 
