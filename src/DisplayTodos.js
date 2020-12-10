@@ -6,6 +6,10 @@ const StyledTodoItemsContainer = styled.div`
   border-radius: 5px;
   font-size: 18px;
 
+  @media (min-width: 1000px) {
+    font-size: 20px;
+  }
+
   @media (max-width: 400px) {
     font-size: 14px;
   }
@@ -15,6 +19,10 @@ const StyledFilterContainer = styled.div`
   display: flex;
   justify-content: space-around;
   font-size: 14px;
+
+  @media (min-width: 1000px) {
+    font-size: 18px;
+  }
 
   @media (max-width: 400px) {
     font-size: 12px;

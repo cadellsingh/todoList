@@ -22,6 +22,12 @@ const StyledInput = styled.div`
     font-family: "Josefin Sans", sans-serif;
   }
 
+  @media (min-width: 1000px) {
+    & form input[type="text"] {
+      font-size: 22px;
+    }
+  }
+
   @media (max-width: 400px) {
     & form input[type="text"] {
       font-size: 15px;

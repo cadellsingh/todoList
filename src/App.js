@@ -17,6 +17,10 @@ const StyledContainer = styled.div`
   margin: 0 auto;
   max-width: 600px;
 
+  @media (min-width: 1000px) {
+    max-width: 750px;
+  }
+
   @media (max-width: 800px) {
     max-width: 550px;
   }
@@ -99,7 +103,7 @@ const App = () => {
 
           <DisplayTodos todoList={todos} dispatchTodos={dispatchTodos} />
 
-          <Footer todoListLength={todos.length} />
+          {/*<Footer todoListLength={todos.length} />*/}
         </StyledContainer>
       </>
     </ThemeProvider>
