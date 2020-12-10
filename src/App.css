@@ -1,63 +1,15 @@
-body {
-  background-color: lightgreen;
+/*body {*/
+/*  background-color: hsl(235, 21%, 11%);*/
+/*}*/
+
+@media (max-width: 800px) {
+  #container {
+    max-width: 550px;
+  }
 }
 
-.light-theme {
-  color: white;
-}
-
-#container {
-  background: yellow;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  width: 40%;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: green;
-}
-
-header #icon {
-  margin: auto 0;
-}
-
-#form {
-  border: 1px solid green;
-  border-radius: 5px;
-  padding: 20px;
-}
-
-#form form {
-  display: grid;
-  grid-template-columns: 30px 1fr;
-}
-
-#form input[type="checkbox"] {
-  border-radius: 100%;
-}
-
-#form input[type="text"] {
-  border: 0;
-  background-color: yellow;
-  outline: none;
-}
-
-#todo-items .todo {
-  /* display: flex; */
-  display: grid;
-  grid-template-columns: 30px 1fr 1fr;
-  padding: 20px;
-}
-
-.todo p {
-  margin: auto 0;
-}
-
-.todo .icon {
-  justify-self: end;
+@media (max-width: 600px) {
+  #container {
+    max-width: 80%;
+  }
 }
