@@ -8,6 +8,7 @@ import { lightTheme, darkTheme } from "./Themes";
 import { GlobalStyles } from "./GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
+import { useDarkMode } from "./DarkMode";
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -57,10 +58,12 @@ const setTodoList = (state, action) => {
 };
 
 const App = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useDarkMode();
   const [todos, dispatchTodos] = useReducer(setTodoList, todoList);
   const [todo, setTodo] = useState("");
   const [complete, setComplete] = useState(false);
+
+  const themeMode = theme === "light" ? lightTheme : darkTheme;
 
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -80,7 +83,7 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyles />
         <StyledContainer>
