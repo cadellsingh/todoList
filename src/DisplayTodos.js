@@ -3,17 +3,26 @@ import EachTodo from "./EachTodo";
 import styled from "styled-components";
 
 const StyledTodoItemsContainer = styled.div`
-  background-color: hsl(235, 24%, 19%);
   border-radius: 5px;
-  color: hsl(234, 39%, 85%);
   font-size: 18px;
+
+  @media (max-width: 400px) {
+    font-size: 14px;
+  }
 `;
 
 const StyledFilterContainer = styled.div`
   display: flex;
   justify-content: space-around;
   font-size: 14px;
-  color: hsl(234, 11%, 52%);
+
+  @media (max-width: 400px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 330px) {
+    font-size: 10px;
+  }
 `;
 
 const StyledFilterButtons = styled.div`
@@ -22,11 +31,6 @@ const StyledFilterButtons = styled.div`
   & p,
   & + p {
     cursor: pointer;
-  }
-
-  & p:hover,
-  & + p:hover {
-    color: white;
   }
 
   & p:nth-child(2) {
@@ -57,16 +61,16 @@ const DisplayTodos = ({ todoList, dispatchTodos }) => {
 
   return (
     <main>
-      <StyledTodoItemsContainer>
+      <StyledTodoItemsContainer id="display-todos">
         {todoList.map((todo) => {
           return (
             <EachTodo dispatchTodos={dispatchTodos} todo={todo} key={todo.id} />
           );
         })}
 
-        <StyledFilterContainer>
+        <StyledFilterContainer id="filtered-container">
           <p>{todoList.length} item(s)</p>
-          <StyledFilterButtons>
+          <StyledFilterButtons id="filter-buttons">
             <p
               className={filter === "All" ? "clicked" : null}
               onClick={() => setFilter("All")}

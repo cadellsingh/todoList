@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     body {
-      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
       background-color: ${({ theme }) => theme.body};
       font-family: 'Josefin Sans', sans-serif;
       transition: all .50s linear;

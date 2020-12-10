@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 const StyledInput = styled.div`
-  background-color: hsl(235, 24%, 19%);
   border-radius: 5px;
   padding: 20px;
-  margin: 40px 0;
+  margin-bottom: 40px;
 
   & form {
     display: grid;
@@ -18,14 +17,15 @@ const StyledInput = styled.div`
 
   & form input[type="text"] {
     border: 0;
-    background-color: hsl(235, 24%, 19%);
     outline: none;
-    color: hsl(234, 39%, 85%);
     font-size: 18px;
+    font-family: "Josefin Sans", sans-serif;
   }
 
-  & form ::placeholder {
-    color: hsl(234, 39%, 85%);
+  @media (max-width: 400px) {
+    & form input[type="text"] {
+      font-size: 15px;
+    }
   }
 `;
 
@@ -37,7 +37,7 @@ const InputTodo = ({
   setTodo,
 }) => {
   return (
-    <StyledInput>
+    <StyledInput id="input-todo">
       <form onSubmit={handleOnSubmit}>
         <input
           type="checkbox"
@@ -45,6 +45,7 @@ const InputTodo = ({
           checked={complete}
           onChange={() => setComplete(!complete)}
         />
+
         <input
           type="text"
           name="todo"

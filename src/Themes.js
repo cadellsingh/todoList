@@ -1,8 +1,8 @@
 export const darkTheme = {
   body: "hsl(235, 21%, 11%)",
   header: "white",
-  todoBackground: "hsl(235, 24%, 19%)", // use for display and input todos as well as the inputs
-  todoText: "hsl(234, 39%, 85%)", // use for form placeholder
+  todoBackground: "hsl(235, 24%, 19%)",
+  todoText: "hsl(234, 39%, 85%)",
   eachTodoBorder: "1px solid hsl(233, 14%, 35%)",
   todoCompleted: "hsl(234, 11%, 52%)",
   filterContainerText: "hsl(234, 11%, 52%)",

@@ -7,7 +7,7 @@ const StyledTodo = styled.div`
   display: grid;
   grid-template-columns: 30px 1fr 20px;
   padding: 20px;
-  border-bottom: 1px solid hsl(233, 14%, 35%);
+  transition: all 0.5s linear;
 
   & p {
     margin: auto 0;
@@ -19,7 +19,6 @@ const StyledTodo = styled.div`
 
   & .todo-completed {
     text-decoration: line-through;
-    color: hsl(234, 11%, 52%);
   }
 `;
 
@@ -27,7 +26,7 @@ const EachTodo = ({ todo, dispatchTodos }) => {
   const [isShown, setIsShown] = useState(false);
   return (
     <StyledTodo
-      data-info={JSON.stringify(todo)}
+      id="each-todo"
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
