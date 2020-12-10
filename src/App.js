@@ -5,92 +5,140 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { uid } from "./utils/uid";
+import DisplayTodos from "./DisplayTodos";
+import Header from "./Header";
+import InputTodo from "./InputTodo";
+import Footer from "./Footer";
+import styled from "styled-components";
+
+const StyledBackgroundImage = styled.div`
+  background-color: hsl(235, 21%, 11%);
+  //min-height: 100%;
+  background-repeat: repeat-y;
+`;
+
+const StyledContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 600px;
+`;
 
 // header todo-items & the form could be their own components
 
-const todoList = [];
+// const todoList = [];
+
+const todoList = [
+  {
+    id: 0,
+    description: "10 minutes mediation",
+    complete: false,
+  },
+  {
+    id: 1,
+    description: "Compelete Todo app on frontend mentor",
+    complete: false,
+  },
+  {
+    id: 2,
+    description: "Run 5 laps",
+    complete: false,
+  },
+  {
+    id: 3,
+    description: "Read for 1 hour",
+    complete: false,
+  },
+  {
+    id: 4,
+    description: "Pick up groceries",
+    complete: true,
+  },
+  {
+    id: 5,
+    description: "Read for 1 hour",
+    complete: false,
+  },
+  {
+    id: 6,
+    description: "Pick up groceries",
+    complete: true,
+  },
+  {
+    id: 7,
+    description: "Read for 1 hour",
+    complete: false,
+  },
+  {
+    id: 8,
+    description: "Pick up groceries",
+    complete: true,
+  },
+];
 
 const setTodoList = (state, action) => {
-  const { todo, completed } = action;
+  const { description, complete, type, id } = action;
 
-  const newTodo = {
-    id: uid(),
-    todo: todo,
-    completed: completed,
-  };
+  switch (type) {
+    case "new-todo":
+      const newTodo = {
+        id: uid(),
+        description: description,
+        complete: complete,
+      };
 
-  return [...state, newTodo];
+      return [...state, newTodo];
+
+    case "toggle-complete":
+      return state.map((todo) => {
+        return todo.id === id ? { ...todo, complete: !todo.complete } : todo;
+      });
+
+    case "delete-todo":
+      return state.filter((todo) => !(todo.id === id));
+
+    case "clear-completed":
+      return state.filter((todo) => !todo.complete);
+  }
 };
 
 const App = () => {
   const [todos, dispatchTodos] = useReducer(setTodoList, todoList);
   const [todo, setTodo] = useState("");
-  const [completed, setCompleted] = useState(false);
+  const [complete, setComplete] = useState(false);
 
   const handleOnSubmit = (event) => {
-    dispatchTodos({ todo: todo, completed: completed });
+    dispatchTodos({
+      description: todo,
+      complete: complete,
+      type: "new-todo",
+    });
 
     setTodo("");
-    setCompleted(false);
+    setComplete(false);
 
     event.preventDefault();
   };
 
   return (
-    <div id="container">
-      <header>
-        <h2>Todo</h2>
-        {/* <FontAwesomeIcon icon={faMoon} /> */}
-        <div id="icon">
-          <FontAwesomeIcon className="light-theme" icon={faSun} />
-        </div>
-      </header>
-      <div id="form">
-        <form onSubmit={handleOnSubmit}>
-          <input
-            type="checkbox"
-            name="completed"
-            checked={completed}
-            onChange={() => setCompleted(!completed)}
-          />
-          <input
-            type="text"
-            name="todo"
-            placeholder="Enter todo"
-            value={todo}
-            onChange={(event) => setTodo(event.target.value)}
-          />
-        </form>
-      </div>
+    <StyledBackgroundImage>
+      <StyledContainer>
+        <Header />
 
-      <div id="todo-items">
-        <div className="todo">
-          <input type="checkbox" />
-          <p>jog around the park</p>
-          <FontAwesomeIcon className="icon" icon={faTimes} />
-        </div>
-        <div className="todo">
-          <input type="checkbox" />
-          <p>jog around the park</p>
-          <FontAwesomeIcon className="icon" icon={faTimes} />
-        </div>
-        <div className="todo">
-          <input type="checkbox" />
-          <p>read for 1 hr</p>
-          <FontAwesomeIcon className="icon" icon={faTimes} />
-        </div>
-        <div className="todo">
-          <input type="checkbox" />
-          <p>pick up groceries </p>
-          <FontAwesomeIcon className="icon" icon={faTimes} />
-        </div>
-        <div className="todo">
-          <input type="checkbox" />
-          <p>complete todo app on frontend mentor</p>
-          <FontAwesomeIcon className="icon" icon={faTimes} />
-        </div>
-      </div>
-    </div>
+        <InputTodo
+          handleOnSubmit={handleOnSubmit}
+          complete={complete}
+          todo={todo}
+          setComplete={setComplete}
+          setTodo={setTodo}
+        />
+
+        <DisplayTodos todoList={todos} dispatchTodos={dispatchTodos} />
+
+        <Footer />
+      </StyledContainer>
+    </StyledBackgroundImage>
   );
 };
 
