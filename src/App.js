@@ -92,7 +92,6 @@ const App = () => {
         <GlobalStyles />
         <StyledContainer>
           <Header themeToggler={themeToggler} theme={theme} />
-
           <InputTodo
             handleOnSubmit={handleOnSubmit}
             complete={complete}
@@ -100,9 +99,7 @@ const App = () => {
             setComplete={setComplete}
             setTodo={setTodo}
           />
-
           <DisplayTodos todoList={todos} dispatchTodos={dispatchTodos} />
-
           {/*<Footer todoListLength={todos.length} />*/}
         </StyledContainer>
       </>
