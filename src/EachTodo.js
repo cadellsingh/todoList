@@ -33,6 +33,7 @@ const EachTodo = ({ todo, dispatchTodos }) => {
       <div>
         <label htmlFor="checkbox" />
         <input
+          aria-labelledby="checkbox"
           id="checkbox"
           type="checkbox"
           checked={todo.complete}
