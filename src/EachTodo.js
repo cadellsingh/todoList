@@ -30,11 +30,17 @@ const EachTodo = ({ todo, dispatchTodos }) => {
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      <input
-        type="checkbox"
-        checked={todo.complete}
-        onChange={() => dispatchTodos({ type: "toggle-complete", id: todo.id })}
-      />
+      <div>
+        <label htmlFor="checkbox" />
+        <input
+          id="checkbox"
+          type="checkbox"
+          checked={todo.complete}
+          onChange={() =>
+            dispatchTodos({ type: "toggle-complete", id: todo.id })
+          }
+        />
+      </div>
       <p className={todo.complete ? "todo-completed" : null}>
         {todo.description}
       </p>

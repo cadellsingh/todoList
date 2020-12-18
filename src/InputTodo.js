@@ -45,20 +45,30 @@ const InputTodo = ({
   return (
     <StyledInput id="input-todo">
       <form onSubmit={handleOnSubmit}>
-        <input
-          type="checkbox"
-          name="completed"
-          checked={complete}
-          onChange={() => setComplete(!complete)}
-        />
+        <div>
+          <label htmlFor="completed" />
+          <input
+            aria-labelledby="completed"
+            id="completed"
+            type="checkbox"
+            name="completed"
+            checked={complete}
+            onChange={() => setComplete(!complete)}
+          />
+        </div>
 
-        <input
-          type="text"
-          name="todo"
-          placeholder="Enter todo"
-          value={todo}
-          onChange={(event) => setTodo(event.target.value)}
-        />
+        <div>
+          <label htmlFor="todo" />
+          <input
+            aria-labelledby="todo"
+            id="todo"
+            type="text"
+            name="todo"
+            placeholder="Enter todo"
+            value={todo}
+            onChange={(event) => setTodo(event.target.value)}
+          />
+        </div>
       </form>
     </StyledInput>
   );
