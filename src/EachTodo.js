@@ -31,10 +31,8 @@ const EachTodo = ({ todo, dispatchTodos }) => {
       onMouseLeave={() => setIsShown(false)}
     >
       <div>
-        <label htmlFor="checkbox" />
         <input
-          aria-labelledby="checkbox"
-          id="checkbox"
+          aria-label="checkbox"
           type="checkbox"
           checked={todo.complete}
           onChange={() =>

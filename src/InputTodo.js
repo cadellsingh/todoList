@@ -46,10 +46,8 @@ const InputTodo = ({
     <StyledInput id="input-todo">
       <form onSubmit={handleOnSubmit}>
         <div>
-          <label htmlFor="completed" />
           <input
-            aria-labelledby="completed"
-            id="completed"
+            aria-label="completed"
             type="checkbox"
             name="completed"
             checked={complete}
@@ -58,10 +56,8 @@ const InputTodo = ({
         </div>
 
         <div>
-          <label htmlFor="todo" />
           <input
-            aria-labelledby="todo"
-            id="todo"
+            aria-label="todo"
             type="text"
             name="todo"
             placeholder="Enter todo"
