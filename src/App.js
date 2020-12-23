@@ -3,7 +3,6 @@ import { uid } from "./utils/uid";
 import DisplayTodos from "./DisplayTodos";
 import Header from "./Header";
 import InputTodo from "./InputTodo";
-import Footer from "./Footer";
 import { lightTheme, darkTheme } from "./Themes";
 import { GlobalStyles } from "./GlobalStyles";
 import { ThemeProvider } from "styled-components";
@@ -100,7 +99,6 @@ const App = () => {
             setTodo={setTodo}
           />
           <DisplayTodos todoList={todos} dispatchTodos={dispatchTodos} />
-          {/*<Footer todoListLength={todos.length} />*/}
         </StyledContainer>
       </>
     </ThemeProvider>
